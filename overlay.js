@@ -9,7 +9,7 @@ socket.onopen = () => {
     // Send channel ID to subscribe
     socket.send(JSON.stringify({
         type: 'subscribe',
-        channelID: 'YOUR_CHANNEL_ID' // Replace with Twitch channel ID
+        channelID: '61792542' // Replace with Twitch channel ID
     }));
 };
 
