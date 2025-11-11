@@ -4,7 +4,7 @@ const container = document.getElementById('purchase-container');
 const socket = new WebSocket('wss://twitch-coffee-server-production.up.railway.app');
 
 socket.onopen = () => {
-    console.log('Connected to WebSocket server');
+    console.log('Connected to WebSocket server :)');
 
     // Send channel ID to subscribe
     socket.send(JSON.stringify({
