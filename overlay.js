@@ -17,8 +17,9 @@ socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
     console.log('Purchase received:', data);
 
-    // Display user name and product
-    container.textContent = `${data.userID} bought ${data.sku}`;
+const user = data.displayName || data.userId;
+const product = data.product?.displayName || data.product?.sku;
+container.textContent = `${user} bought ${product}`;
     
     // Clear text after 3 seconds
     setTimeout(() => container.textContent = '', 3000);
