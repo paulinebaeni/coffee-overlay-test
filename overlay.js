@@ -30,10 +30,10 @@ socket.onmessage = (event) => {
         return;
     }
 
-    if (data.displayName && data.product) {
+if (data.user_name && data.product) {
         // Show purchase
-        const user = data.displayName;
-        const product = data.product.displayName || data.product.sku;
+    const user = data.user_name;
+    const product = data.product.displayName || data.product.sku || data.product;
         container.textContent = `${user} bought ${product}`;
         setTimeout(() => container.textContent = '', 3000);
 
