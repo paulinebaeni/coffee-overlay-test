@@ -25,18 +25,19 @@ socket.onopen = () => {
 socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
 
-    // Always send pong so config panel knows overlay is alive
-    if (channelID) socket.send(JSON.stringify({ type: 'pong', channelID }));
+    if (data.type === 'pong') {
+        // This is just a ping back from the server; ignore it
+        return;
+    }
 
-    // Only show purchase alerts
     if (data.displayName && data.product) {
+        // Show purchase
         const user = data.displayName;
         const product = data.product.displayName || data.product.sku;
         container.textContent = `${user} bought ${product}`;
-
-        // Clear text after 3 seconds
         setTimeout(() => container.textContent = '', 3000);
-    }
 
-    console.log('WS message received:', data);
+        // Notify server that overlay received this purchase/test alert
+        socket.send(JSON.stringify({ type: 'pong', channelID }));
+    }
 };
