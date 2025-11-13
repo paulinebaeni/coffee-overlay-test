@@ -13,14 +13,14 @@ if (!channelID) {
 const socket = new WebSocket('wss://twitch-coffee-server-production.up.railway.app');
 
 socket.onopen = () => {
-    console.log('Connected to WebSocket server!');
+    console.log('Connected to WebSocket servers!');
 
     // Subscribe to this channel
     socket.send(JSON.stringify({
         type: 'subscribe',
         channelID: channelID
     }));
-     //   socket.send(JSON.stringify({ type: 'pong', channelID }));
+
 };
 
 socket.onmessage = (event) => {
