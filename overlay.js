@@ -20,6 +20,7 @@ socket.onopen = () => {
         type: 'subscribe',
         channelID: channelID
     }));
+        socket.send(JSON.stringify({ type: 'pong', channelID }));
 };
 
 socket.onmessage = (event) => {
