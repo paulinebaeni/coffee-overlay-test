@@ -20,7 +20,9 @@ socket.onopen = () => {
         type: 'subscribe',
         channelID: channelID
     }));
+       setTimeout(() => {
         socket.send(JSON.stringify({ type: 'pong', channelID }));
+    }, 100);
 };
 
 socket.onmessage = (event) => {
