@@ -20,13 +20,12 @@ socket.onopen = () => {
         type: 'subscribe',
         channelID: channelID
     }));
-       setTimeout(() => {
-        socket.send(JSON.stringify({ type: 'pong', channelID }));
-    }, 100);
+     //   socket.send(JSON.stringify({ type: 'pong', channelID }));
 };
 
 socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
+        if (channelID) socket.send(JSON.stringify({ type: 'pong', channelID }));
     console.log('Purchase received:', data);
 
     const user = data.displayName || data.userId;
