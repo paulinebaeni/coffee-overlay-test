@@ -10,7 +10,7 @@ if (!channelID) {
 }
 
 // Connect to your WebSocket server
-const socket = new WebSocket('wss://twitch-coffee-server-production.up.railway.app');
+const socket = new WebSocket('wss://cozycafe.thecozydeck.ch');
 
 socket.onopen = () => {
     console.log('Connected to WebSocket servers!');
